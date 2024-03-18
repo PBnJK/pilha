@@ -2,6 +2,7 @@
 # Sessão de prompt
 # Pedro B. <pedrobuitragons@gmail.com>
 
+from .lexer import Lexer
 from .interpreter import Interpreter
 
 def run_prompt() -> None:
@@ -17,6 +18,8 @@ def run_prompt() -> None:
         if text == 'exit':
             return
         
-        interpreter: Interpreter = Interpreter(text)
+        lexer: Lexer = Lexer(text)
+        interpreter: Interpreter = Interpreter(lexer)
+
         print(interpreter.expr())
 
